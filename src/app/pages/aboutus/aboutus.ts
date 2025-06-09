@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { AboutServices } from '../../services/about-services';
 
 @Component({
   selector: 'app-aboutus',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './aboutus.css'
 })
 export class Aboutus {
+    teamMembers;
 
+  constructor(private aboutService: AboutServices) {
+      this.teamMembers = this.aboutService.getTeamMembers();
+  }
 }
