@@ -1,0 +1,5 @@
+form registroFrom=ngForm"(ngSubmit)= "Registrar()">
+<label>nombre:</label>
+<input type=text 
+
+
