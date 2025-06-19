@@ -1,4 +1,7 @@
-<form [formGroup]="loginForm" (ngSubmit)="onEnviar($event)">
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2>Iniciar sesión en MateTour</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onEnviar($event)">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email" >
@@ -31,3 +34,5 @@
   </div>
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
+  </div>
+</div>
