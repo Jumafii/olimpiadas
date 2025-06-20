@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 })
 export class AuthService {
 
-  url: string = 'tps://backend-olimpiadas.onrender.com';
+  url: string = 'https://backend-olimpiadas.onrender.com';
 
   private loginData:any = new BehaviorSubject<any>("{}");
 
@@ -28,6 +28,16 @@ export class AuthService {
         return response;
       }
     ));
-
   }
+  register(userData: any): Observable<any> {
+  return this.http.post(`${this.url}/users`, userData).pipe(tap(
+    (response: any) => {
+      // Guardar los datos del usuario en el BehaviorSubject
+      localStorage.setItem('authenticatedUserId', response.user_id);
+      this.loginData.next(response);
+      return response;
+    }
+  ));
+}
+
 }

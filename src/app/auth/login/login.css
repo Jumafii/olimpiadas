@@ -64,3 +64,21 @@ body {
   font-size: 13px;
   margin-top: 5px;
 }
+
+.btn-outline-primary {
+  border: 1px solid #3b5d50;
+  color: #3b5d50;
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3b5d50;
+  color: #fff;
+}
+.login-card .forgot-password {
+  text-align: center;
+  margin-top: 20px;
+}

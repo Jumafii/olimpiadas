@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -11,32 +14,45 @@ export class Register {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private AuthService:AuthService, private router:Router) {
     this.registerForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      rol: ['', Validators.required],
     });
   }
 
-  get Nombre() {
-    return this.registerForm.get("nombre");
+  get first_name() {
+    return this.registerForm.get('first_name');
+  } 
+
+  get last_name() {
+    return this.registerForm.get('last_name');
+  } 
+
+  get email() {
+    return this.registerForm.get('email');
   }
 
-  get Email() {
-    return this.registerForm.get("email");
+  get password() {
+    return this.registerForm.get('password');
   }
 
-  get Password() {
-    return this.registerForm.get("password");
+  get rol() {
+    return this.registerForm.get('rol');
   }
-
-  onRegistrar(event: Event) {
+  onSubmit() {
     if (this.registerForm.valid) {
-      // Aquí enviarías los datos al backend para registrar al usuario
-      console.log(this.registerForm.value);
+      const userData = this.registerForm.value;
+      console.log('UserData:', userData);
+      // Aquí puedes llamar al servicio de registro para enviar los datos al backend
+      this.AuthService.register(userData).subscribe(response => {
+        console.log('Registro exitoso:', response);
+      });
     } else {
-      console.log("Formulario inválido");
+      console.log('Formulario inválido');
     }
   }
 }

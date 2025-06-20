@@ -58,4 +58,7 @@ export class Login {
     }
     
   }
+  irARegistro(): void {
+  this.router.navigateByUrl('/register');
+  }
 }
