@@ -1,0 +1,33 @@
+<div class="container my-5">
+  <div class="card border-0 shadow p-4" style="border-radius: 24px;">
+    <h3 class="fw-bold mb-4 text-center" style="color: #3b5d50;">Crear nuevo producto</h3>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Nombre</label>
+        <input class="form-control form-control-lg" formControlName="name" type="text" placeholder="Ej. Paquete Patagonia" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Descripción</label>
+        <textarea class="form-control form-control-lg" rows="3" formControlName="description" placeholder="Detalles del paquete..."></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Precio</label>
+        <input class="form-control form-control-lg" formControlName="price" type="number" step="0.01" placeholder="Ej. 25999.99" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Categoría</label>
+        <input class="form-control form-control-lg" formControlName="category" type="text" placeholder="Ej. Nacional, Internacional..." />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Imagen (URL)</label>
+        <input class="form-control form-control-lg" formControlName="imagen" type="text" placeholder="https://..." />
+      </div>
+
+      <button type="submit" class="btn btn-furni w-100 py-2 mt-3">Crear Producto</button>
+    </form>
+  </div>
+</div>

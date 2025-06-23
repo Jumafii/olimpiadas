@@ -1,0 +1,22 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-furni {
+  background-color: #3b5d50;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-furni:hover {
+  background-color: #f9bf29;
+  color: #3b5d50;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 16px;
+}
