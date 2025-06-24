@@ -1,0 +1,16 @@
+<div class="product-list">
+  <h2>🧳 Productos disponibles</h2>
+
+  <div *ngIf="products.length > 0; else sinProductos">
+    <div *ngFor="let p of products" class="product-card">
+      <h3>{{ p.name }}</h3>
+      <p>{{ p.description }}</p>
+      <strong>{{ p.price | currency:'ARS' }}</strong>
+      <button>Agregar al carrito</button>
+    </div>
+  </div>
+
+  <ng-template #sinProductos>
+    <p>No hay productos disponibles en este momento.</p>
+  </ng-template>
+</div>

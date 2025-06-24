@@ -50,6 +50,15 @@ export class Register {
       // Aquí puedes llamar al servicio de registro para enviar los datos al backend
       this.AuthService.register(userData).subscribe(response => {
         console.log('Registro exitoso:', response);
+        const userRol = response.rol || 'user'; // o 'admin'
+        // Guardar en localStorage
+        localStorage.setItem('rol', userRol);
+        // Redirigir según el rol
+        if (userRol === 'admin') {
+          this.router.navigateByUrl('/dashboard-admin');
+        } else {
+          this.router.navigateByUrl('/dashboard-client');
+        }
       });
     } else {
       console.log('Formulario inválido');

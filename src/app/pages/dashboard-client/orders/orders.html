@@ -1,0 +1,42 @@
+<div class="orders-container">
+  <h1>📦 Pedidos de Viajes</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Fecha</th>
+        <th>Precio Total</th>
+        <th>Estado</th>
+        <th>Detalles</th>
+        <th>Cambiar Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.user_id }}</td>
+        <td>{{ order.date | date: 'short' }}</td>
+        <td>{{ order.price != null ? (order.price | currency:'ARS':'symbol') : '-' }}</td>
+        <td [ngClass]="{'pendiente': order.status === 'pendiente', 'aprobado': order.status === 'aprobado', 'anulado': order.status === 'anulado'}">
+          {{ order.status }}
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let d of order.details || []">
+              {{ d.description }} ({{ d.price != null ? (d.price | currency:'ARS':'symbol') : '-' }})
+            </li>
+          </ul>
+        </td>
+        <td>
+          <select [ngModel]="order.status" (ngModelChange)="cambiarEstado(order, $event)">
+            <option value="pendiente">Pendiente</option>
+            <option value="aprobado">Aprobado</option>
+            <option value="anulado">Anulado</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

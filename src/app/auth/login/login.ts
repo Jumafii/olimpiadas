@@ -33,32 +33,35 @@ export class Login {
   }
 
 
-  onEnviar(event:Event)
-  {
-    if (this.loginForm.valid)
-    {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (response) => {
-          console.log("Login exitoso", response);
-          //redirigir a la dashboard del cliente
-          this.router.navigateByUrl('/home');
-        },
-        error: (error) => {
-          alert("Error en el login");
-          console.error("Error en el login", error);
-          
+onEnviar(event: Event) {
+  if (this.loginForm.valid) {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (response) => {
+        console.log("Login exitoso", response);
+
+        //  tomar rol del backend
+        const rol = response.rol || 'user'; // o 'admin'
+
+        // Guardar en localStorage
+        localStorage.setItem('rol', rol);
+
+        // Redirigir según el rol
+        if (rol === 'admin') {
+          this.router.navigateByUrl('/dashboard-admin');
+        } else {
+          this.router.navigateByUrl('/dashboard-client');
         }
-      })
-      console.log(this.loginForm.value)
-    }
-    else
-    {
-      // Mostrar mensaje de error
-      console.log("Formulario inválido");
-    }
-    
+      },
+      error: (error) => {
+        alert("Error en el login");
+        console.error("Error en el login", error);
+      }
+    });
+  } else {
+    console.log("Formulario inválido");
   }
-  irARegistro(): void {
+}
+irARegistro() {
   this.router.navigateByUrl('/register');
-  }
+}
 }

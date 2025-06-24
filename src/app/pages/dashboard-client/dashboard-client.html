@@ -1,0 +1,16 @@
+<header class="client-header">
+  <h1>Bienvenido</h1>
+  <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+</header>
+
+<div class="dashboard-client">
+  <nav class="sidebar">
+    <a routerLink="products" routerLinkActive="active">Productos</a>
+    <a routerLink="cart" routerLinkActive="active">Carrito</a>
+    <a routerLink="orders" routerLinkActive="active">Mis Pedidos</a>
+  </nav>
+
+  <main class="dashboard-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
