@@ -1,40 +1,50 @@
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminProductsService } from '../../../services/admin-products';
+import { AdminProductsService, Product } from '../../../services/admin-products';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-product-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './product-create.html',
   styleUrl: './product-create.css'
 })
-export class ProductCreateComponent {
-  productForm: ReturnType<FormBuilder['group']>;
-  http: any;
+
+export class ProductCreate {
+  productForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private adminProducts: AdminProductsService, 
+    private fb: FormBuilder,
+    private productService: AdminProductsService,
     private router: Router
   ) {
-    this.productForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      descripcion: [''],
-      precio: [0, [Validators.required, Validators.min(0)]],
-      categoria: [''],
-      imagen: [''] // URL de imagen
+    this.productForm = this.fb.group({
+      name: ['', Validators.required],
+      description: [''],
+      price: [null, [Validators.required, Validators.min(0)]],
+      category: ['', Validators.required],
+      imagen: [''],
     });
   }
-
+  products: Product[] = []
   onSubmit() {
     if (this.productForm.valid) {
-      this.adminProducts.createProduct(this.productForm.value).subscribe(() => {
-        alert('Producto creado!');
-        this.productForm.reset();
+      const product: Product = this.productForm.value;
+      this.productService.createProduct(product).subscribe(() => {
+        alert('Producto creado correctamente');
+        this.router.navigate(['/adminDashboard/productos']);
       });
+    } else {
+      this.productForm.markAllAsTouched();
     }
   }
-
+  deleteProducto(id: number) {
+  if (confirm('¿Estás seguro de eliminar este producto?')) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.products = this.products.filter(p => p.id !== id);
+    });
+  }
+}
 }

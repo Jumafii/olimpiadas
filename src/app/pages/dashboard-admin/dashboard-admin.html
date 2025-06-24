@@ -1,1 +1,16 @@
-<p>dashboard-admin works!</p>
+<header class="admin-header">
+  <h1>Panel Admin</h1>
+  <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+</header>
+
+<div class="dashboard-admin">
+  <nav class="sidebar">
+    <a routerLink="pendientes" routerLinkActive="active">Pedidos</a>
+    <a routerLink="productos" routerLinkActive="active">Productos</a>
+    <a routerLink="crear" routerLinkActive="active">Crear producto</a>
+  </nav>
+
+  <main class="dashboard-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

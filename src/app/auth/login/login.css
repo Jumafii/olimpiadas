@@ -1,7 +1,12 @@
 body {
   background-color: #3b5d50; /* fondo oscuro verdoso de Furni */
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #3b5d50 0%, #2f4a40 100%);
+  font-family: 'Poppins', sans-serif;
 }
+
 
 .login-wrapper {
   min-height: 100vh;
@@ -13,14 +18,17 @@ body {
 }
 
 .login-card {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  padding: 50px 40px;
-  max-width: 420px;
-  width: 100%;
-  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  padding: 3rem 2.5rem;
+  transition: transform 0.3s ease;
 }
+
+.login-card:hover {
+  transform: translateY(-6px);
+}
+
 
 .login-card h2 {
   text-align: center;
@@ -35,10 +43,13 @@ body {
 }
 
 .login-card .form-control {
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #ced4da;
-  padding: 12px 14px;
-  font-size: 15px;
+  transition: box-shadow 0.25s ease;
+}
+
+.login-card .form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(59, 93, 80, 0.25);
 }
 
 .login-card .form-control:focus {
@@ -48,17 +59,18 @@ body {
 
 .login-card .btn-primary {
   background-color: #3b5d50;
-  border-color: #3b5d50;
-  border-radius: 10px;
-  font-weight: 500;
-  width: 100%;
-  padding: 12px;
-  transition: background-color 0.3s ease;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .login-card .btn-primary:hover {
-  background-color: #2f4a40;
+  background-color: #f9bf29;
+  color: #3b5d50;
+  border-color: #f9bf29;
 }
+
 
 .text-danger {
   font-size: 13px;

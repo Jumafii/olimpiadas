@@ -1,1 +1,32 @@
-<p>pending-orders works!</p>
+<div class="container my-5">
+  <h3 class="text-center fw-bold mb-4" style="color: #3b5d50;">Pedidos Pendientes</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle shadow-sm">
+      <thead style="background-color: #f9f9f9;">
+        <tr style="color: #3b5d50;">
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidosPendientes">
+          <td>{{ pedido.id }}</td>
+          <td>{{ pedido.user }}</td>
+          <td>{{ pedido.date | date:'shortDate' }}</td>
+          <td class="text-success">$ {{ pedido.price }}</td>
+          <td><span class="badge text-bg-warning">{{ pedido.status }}</span></td>
+          <td>
+            <button class="btn btn-outline-dark btn-sm" (click)="actualizarEstado(pedido.id, 'enviado')">
+              Marcar como enviado
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,34 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProductList } from '../pages/dashboard-admin/product-list/product-list';
+
+
+ export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  category: string;
+  imagen?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminProductsService {
-  private apiUrl = 'https://backend-olimpiadas.onrender.com';
+  private apiUrl = 'https://backend-olimpiadas.onrender.com/products'; 
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<ProductList[]> {
-    return this.http.get<ProductList[]>(this.apiUrl);
-  }
-  getById(id: number): Observable<ProductList> {
-    return this.http.get<ProductList>(`${this.apiUrl}/${id}`);
-  }
-  create(product: ProductList): Observable<ProductList> {
-    return this.http.post<ProductList>(this.apiUrl, product);
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl); // GET /products
   }
 
-  update(id: number, product: ProductList): Observable<ProductList> {
-    return this.http.put<ProductList>(`${this.apiUrl}/${id}`, product);
+  createProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product); // POST /products
   }
 
-  delete(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  updateProduct(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, product); // PUT /products/{id}
   }
-  createProduct(product: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/products`, product);
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`); // DELETE /products/{id}
   }
 }

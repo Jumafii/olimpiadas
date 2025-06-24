@@ -1,1 +1,35 @@
-<p>product-list works!</p>
+<ng-container *ngIf="(products?.length ?? 0) > 0; else sinProductos">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let product of products">
+      <!-- Tarjeta de producto -->
+      <div class="card">
+        <div class="card-body">
+          <h5>{{ product.name }}</h5>
+          <p>{{ product.description }}</p>
+          <p>${{ product.price }}</p>
+          <small>{{ product.category }}</small>
+        </div>
+          <button class="btn btn-outline-danger btn-sm w-100" (click)="deleteProducto(product.id)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #sinProductos>
+  <div class="text-center text-muted mt-5">
+    No hay productos disponibles.
+  </div>
+</ng-template>
+<div class="text-center mt-5">
+  <button class="btn btn-primary" (click)="loadProducts()">
+    Cargar Productos
+  </button>
+  <ng-template #sinProductos>
+    <div class="text-center mt-5 text-muted">
+      No hay productos disponibles.
+    </div>
+  </ng-template>
+</div>
+
