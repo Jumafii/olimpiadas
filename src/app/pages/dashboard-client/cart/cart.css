@@ -1,0 +1,60 @@
+.cart-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fdfdfd;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tfoot td {
+  font-weight: bold;
+}
+
+.total-label {
+  text-align: right;
+}
+
+.total-value {
+  color: #28a745;
+}
+
+button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #c82333;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}

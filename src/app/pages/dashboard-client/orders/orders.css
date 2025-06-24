@@ -1,0 +1,55 @@
+.orders-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9f9f9;
+  box-shadow: 0 0 5px #ccc;
+}
+
+thead {
+  background: #007bff;
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.pendiente {
+  color: orange;
+  font-weight: bold;
+}
+
+.aprobado {
+  color: green;
+  font-weight: bold;
+}
+
+.anulado {
+  color: red;
+  font-weight: bold;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0;
+}
